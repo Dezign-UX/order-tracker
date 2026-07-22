@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Status Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Order Status Tracker</h1>
+    <div class="topbar-actions">
+      <button id="importBtn" type="button">Import orders from Excel</button>
+      <input type="file" id="importInput" accept=".xlsx,.xls" hidden />
+      <div class="whoami">
+        <label for="userName">Your name</label>
+        <input type="text" id="userName" placeholder="e.g. Nick" />
+      </div>
+    </div>
+  </header>
+
+  <div id="sourceBanner" class="banner" hidden></div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="light light-green"></span> Flowing &mdash; payment, sales order &amp; PO all done</span>
+    <span class="legend-item"><span class="light light-orange"></span> Awaiting a step, or cancellation in progress</span>
+    <span class="legend-item"><span class="light light-red"></span> Cancelled &amp; fully refunded/unwound</span>
+  </div>
+
+  <main>
+    <table id="ordersTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Order #</th>
+          <th>Web Ref</th>
+          <th>Customer</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>ETA</th>
+          <th>Last updated</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="ordersBody">
+        <tr><td colspan="10" class="loading">Loading orders&hellip;</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <dialog id="historyDialog">
+    <h2>History for <span id="historyOrderNumber"></span></h2>
+    <ul id="historyList"></ul>
+    <button id="closeHistory">Close</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
